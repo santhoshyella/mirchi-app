@@ -23,7 +23,7 @@ This is the easiest way to get everything running: the database, API, and web ap
 **1. Clone the repository**
 
 ```bash
-git clone https://github.com/flavica/guntur-mirchi.git
+[git clone https://github.com/flavica/guntur-mirchi.git](https://github.com/santhoshyella/mirchi-app.git)
 cd guntur-mirchi
 ```
 
