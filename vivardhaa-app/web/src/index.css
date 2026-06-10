@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* brand */
+  --vv-acc: #f97316;
+  --vv-acc-hover: #ea6c0c;
+  --vv-acc-bg: rgba(249, 115, 22, 0.09);
+  --vv-acc-bd: rgba(249, 115, 22, 0.3);
+
+  /* semantic */
+  --vv-suc: #10b981;
+  --vv-suc-bg: rgba(16, 185, 129, 0.09);
+  --vv-suc-bd: rgba(16, 185, 129, 0.3);
+  --vv-dan: #ef4444;
+  --vv-dan-bg: rgba(239, 68, 68, 0.09);
+  --vv-dan-bd: rgba(239, 68, 68, 0.28);
+  --vv-inf: #3b82f6;
+  --vv-inf-bg: rgba(59, 130, 246, 0.09);
+  --vv-inf-bd: rgba(59, 130, 246, 0.28);
+  --vv-am: #f59e0b;
+  --vv-am-bg: rgba(245, 158, 11, 0.09);
+  --vv-am-bd: rgba(245, 158, 11, 0.3);
+  --vv-pu: #8b5cf6;
+  --vv-pu-bg: rgba(139, 92, 246, 0.09);
+  --vv-pu-bd: rgba(139, 92, 246, 0.28);
+
+  /* text */
+  --vv-t0: #0f172a;
+  --vv-t1: #334155;
+  --vv-t2: #64748b;
+  --vv-t3: #94a3b8;
+
+  /* surfaces */
+  --vv-bg0: #ffffff;
+  --vv-bg1: #f8fafc;
+  --vv-bg2: #f1f5f9;
+  --vv-bg3: #e2e8f0;
+
+  /* borders */
+  --vv-bd: rgba(0, 0, 0, 0.07);
+  --vv-bd2: rgba(0, 0, 0, 0.12);
+
+  /* radius */
+  --vv-r-sm: 6px;
+  --vv-r-md: 10px;
+  --vv-r-lg: 14px;
+}
+
+/* ── Dark theme ─────────────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --vv-t0: #f1f5f9;
+  --vv-t1: #cbd5e1;
+  --vv-t2: #94a3b8;
+  --vv-t3: #64748b;
+
+  --vv-bg0: #1e293b;
+  --vv-bg1: #0f172a;
+  --vv-bg2: #1e293b;
+  --vv-bg3: #334155;
+
+  --vv-bd: rgba(255, 255, 255, 0.07);
+  --vv-bd2: rgba(255, 255, 255, 0.12);
+
+  --vv-acc-bg: rgba(249, 115, 22, 0.15);
+  --vv-acc-bd: rgba(249, 115, 22, 0.35);
+  --vv-suc-bg: rgba(16, 185, 129, 0.15);
+  --vv-dan-bg: rgba(239, 68, 68, 0.15);
+  --vv-inf-bg: rgba(59, 130, 246, 0.15);
+  --vv-am-bg: rgba(245, 158, 11, 0.15);
+  --vv-pu-bg: rgba(139, 92, 246, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family:
+    "Plus Jakarta Sans",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  color: var(--vv-t0);
+  background: var(--vv-bg1);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.font-mono,
+.vv-mono {
+  font-family: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Scrollbar — subtle */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--vv-bg3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vv-t3);
+}
+
+/* Form reset for native date input */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.6;
+}

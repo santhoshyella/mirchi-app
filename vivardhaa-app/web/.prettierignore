@@ -1,0 +1,21 @@
+# Build output
+dist
+build
+
+# Dependencies
+node_modules
+
+# Lockfiles — let the package manager own formatting
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Vite's transient timestamp shims
+vite.config.ts.timestamp-*.mjs
+vite.config.js.timestamp-*.mjs
+
+# TS build artifacts
+*.tsbuildinfo
+
+# Generated assets
+public/build

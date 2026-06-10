@@ -1,0 +1,17 @@
+node_modules
+dist
+dist-ssr
+.DS_Store
+*.local
+.env
+.env.*
+!.env.example
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.log
+
+# Vite leaves these temp files behind on macOS when the dev/build process
+# exits before cleanup. Safe to delete — they regenerate on every run.
+vite.config.ts.timestamp-*.mjs
+vite.config.js.timestamp-*.mjs
