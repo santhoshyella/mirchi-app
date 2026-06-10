@@ -1,0 +1,84 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: vivardhaa-postgres
+    environment:
+      POSTGRES_USER: vivardhaa
+      POSTGRES_PASSWORD: vivardhaa_secret
+      POSTGRES_DB: vivardhaa_db
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U vivardhaa -d vivardhaa_db']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - vivardhaa-net
+
+  api:
+    build:
+      context: ./vivardhaa-app/api
+      dockerfile: Dockerfile
+    container_name: vivardhaa-api
+    env_file:
+      - ./vivardhaa-app/api/.env
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: vivardhaa
+      DB_PASSWORD: vivardhaa_secret
+      DB_NAME: vivardhaa_db
+      PORT: 3000
+      NODE_ENV: development
+    ports:
+      - '3000:3000'
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./vivardhaa-app/api:/app
+      - /app/node_modules
+    networks:
+      - vivardhaa-net
+
+  web:
+    build:
+      context: ./vivardhaa-app/web
+      dockerfile: Dockerfile
+    container_name: vivardhaa-web
+    environment:
+      VITE_API_PROXY_TARGET: http://api:3000
+      CHOKIDAR_USEPOLLING: "true"
+      CHOKIDAR_INTERVAL: "300"
+    ports:
+      - '5173:5173'
+    depends_on:
+      - api
+    volumes:
+      - ./vivardhaa-app/web:/app
+      - /app/node_modules
+    networks:
+      - vivardhaa-net
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: vivardhaa-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@vivardhaa.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - '5050:80'
+    depends_on:
+      - postgres
+    networks:
+      - vivardhaa-net
+
+volumes:
+  postgres_data:
+
+networks:
+  vivardhaa-net:
+    driver: bridge
