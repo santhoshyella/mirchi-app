@@ -15,7 +15,7 @@ export class DestemmingJob {
   @Column({ name: 'purchase_id' })
   purchaseId: string;
 
-  @Column()
+  @Column({ nullable: true })
   shop: string;
 
   @Column()
@@ -36,7 +36,7 @@ export class DestemmingJob {
   @Column({ name: 'source_price_per_kg', type: 'numeric', precision: 10, scale: 2, transformer: { to: (v) => v, from: (v) => parseFloat(v) } })
   sourcePricePerKg: number;
 
-  @Column()
+  @Column({ nullable: true })
   destination: string;
 
   @Column({ type: 'date' })
