@@ -31,7 +31,7 @@ function computeStatus(dispatches: any[], inputKg: number): string {
   );
   const unallocatedKg = inputKg - totalSentKg + totalReturnedStemKg;
 
-  const closedCount = dispatches.filter((d: any) => d.receivedAt !== undefined).length;
+  const closedCount = dispatches.filter((d: any) => d.receivedAt != null).length;
   if (closedCount === 0) return 'sent';
   // Still partial if any dispatch is open OR returned-with-stem stock is sitting
   // in the pool waiting to be re-dispatched.
