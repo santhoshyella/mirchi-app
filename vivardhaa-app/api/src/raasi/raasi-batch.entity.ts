@@ -17,7 +17,7 @@ export class RaasiBatch {
   @Column({ name: 'source_ids', type: 'jsonb', default: '[]' })
   sourceIds: string[];
 
-  @Column()
+  @Column({ nullable: true })
   shop: string;
 
   @Column()
